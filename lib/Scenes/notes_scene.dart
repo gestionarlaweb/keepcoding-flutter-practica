@@ -84,6 +84,7 @@ class _NoteSliverState extends State<NoteSliver> {
       ),
       child: Card(
         child: ListTile(
+          // Diseño de la lista
           leading: const Icon(Icons.toc),
           title: Text(widget.notebook[widget.index].body),
           subtitle:

@@ -41,17 +41,25 @@ class MainWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(TextResources.appName),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.add_box),
+            onPressed: () {
+              // Inserta nueva nota
+              model.add(Note("Una nueva nota"));
+            },
+          )
+        ],
       ),
       // El NoteListView lista las notas
-      body: NotesListView(model),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
+      body: GestureDetector(
+        onTap: () {
+          NotesListView(model);
           // Inserta nueva nota
           model.add(Note("Una nueva nota"));
           // Y navega a la nueva pantalla
           Navigator.pushNamed(context, '/detailNotes');
         },
-        child: const Icon(Icons.add),
       ),
     );
   }
@@ -61,7 +69,6 @@ class DetailNotes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(title: Text("List Notebooks !")),
       appBar: AppBar(
         title: const Text("Notebooks "),
       ),
@@ -103,6 +110,7 @@ class _EditNotesState extends State<EditNotes> {
         child: Column(
           children: [
             TextField(
+              textCapitalization: TextCapitalization.sentences,
               decoration: InputDecoration(
                 labelText: 'Text',
                 hintText: 'Your text....',
@@ -112,6 +120,7 @@ class _EditNotesState extends State<EditNotes> {
                   ),
                   onPressed: () {
                     _controller.clear();
+                    setState(() {});
                   },
                 ),
               ),
