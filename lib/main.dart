@@ -103,6 +103,21 @@ class _EditNotesState extends State<EditNotes> {
         child: Column(
           children: [
             TextField(
+              decoration: InputDecoration(
+                labelText: 'Text',
+                hintText: 'Your text....',
+                suffixIcon: IconButton(
+                  icon: const Icon(
+                    Icons.remove_circle,
+                  ),
+                  onPressed: () {
+                    _controller.clear();
+                  },
+                ),
+              ),
+            )
+            /*
+            TextField(
               controller: _controller,
               decoration: const InputDecoration(
                 labelText: 'Nota a editar',
@@ -129,6 +144,7 @@ class _EditNotesState extends State<EditNotes> {
                 child: const Text('Actualizar'),
               ),
             ),
+            */
           ],
         ),
       ),
