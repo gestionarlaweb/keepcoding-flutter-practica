@@ -12,7 +12,6 @@ class NotebooksListView extends StatefulWidget {
 
 class _NotebooksListViewState extends State<NotebooksListView> {
   void modelDidChange() {
-    // Redibujar el Widget
     setState(() {});
   }
 
@@ -63,7 +62,6 @@ class _BookSliverState extends State<BookSliver> {
       key: UniqueKey(),
       onDismissed: (direction) {
         widget.notebooks.removeAt(widget.index);
-        // Mensaje
         Scaffold.of(context).showSnackBar(
           const SnackBar(
             content: Text("Element has been deleted !"),

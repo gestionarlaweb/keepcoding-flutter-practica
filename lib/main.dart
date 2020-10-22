@@ -14,12 +14,6 @@ void main() {
   runApp(TreeBuilder());
 }
 
-// Esto no lo utilizo
-class Message {
-  //final String body;
-  //Message(String newValue) : body = newValue;
-}
-
 class TreeBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

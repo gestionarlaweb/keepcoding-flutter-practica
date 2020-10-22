@@ -3,20 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class NotesListView extends StatefulWidget {
-// Para reconocer el constructor Notebook
   final Notebook _model;
 
-// const (Solo existe una vez, ahorras memoria)
   const NotesListView(Notebook model) : _model = model;
 
   @override
   _NotesListViewState createState() => _NotesListViewState();
 }
 
-//                   Este (State) nos va a dar de alta en las notificaciones
+// Este (State) nos va a dar de alta en las notificaciones
 class _NotesListViewState extends State<NotesListView> {
   void modelDidChange() {
-    // Redibujar el Widget
     setState(() {});
   }
 
@@ -66,10 +63,8 @@ class _NoteSliverState extends State<NoteSliver> {
     final DateFormat fmt = DateFormat("yyyy-mm-dd");
 
     return Dismissible(
-      //key: Key(widget.index.toString()),
       key: UniqueKey(),
       onDismissed: (direction) {
-        // Elimina la nota del modelo
         widget.notebook.removeAt(widget.index);
         Scaffold.of(context).showSnackBar(
           const SnackBar(
@@ -77,7 +72,6 @@ class _NoteSliverState extends State<NoteSliver> {
           ),
         );
 
-        // Mensaje
         Scaffold.of(context).showSnackBar(
           const SnackBar(
             content: Text("Element has been deleted !"),
@@ -90,7 +84,6 @@ class _NoteSliverState extends State<NoteSliver> {
       ),
       child: Card(
         child: ListTile(
-          // Diseño de la lista
           leading: const Icon(Icons.toc),
           title: Text(widget.notebook[widget.index].body),
           subtitle:
