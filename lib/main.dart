@@ -51,15 +51,15 @@ class MainWidget extends StatelessWidget {
           )
         ],
       ),
-      // El NoteListView lista las notas
+      // El NoteListView lista las notas ***********
       body: GestureDetector(
         onTap: () {
-          NotesListView(model);
           // Inserta nueva nota
           model.add(Note("Una nueva nota"));
           // Y navega a la nueva pantalla
           Navigator.pushNamed(context, '/detailNotes');
         },
+        child: NotesListView(model),
       ),
     );
   }
@@ -115,9 +115,7 @@ class _EditNotesState extends State<EditNotes> {
                 labelText: 'Text',
                 hintText: 'Your text....',
                 suffixIcon: IconButton(
-                  icon: const Icon(
-                    Icons.remove_circle,
-                  ),
+                  icon: const Icon(Icons.clear),
                   onPressed: () {
                     _controller.clear();
                     setState(() {});
@@ -125,35 +123,6 @@ class _EditNotesState extends State<EditNotes> {
                 ),
               ),
             )
-            /*
-            TextField(
-              controller: _controller,
-              decoration: const InputDecoration(
-                labelText: 'Nota a editar',
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-              ),
-              onSubmitted: (String nota) {},
-            ),
-            Align(
-              child: RaisedButton(
-                onPressed: () {
-                  _controller.clear();
-                },
-                child: const Text('Borrar'),
-              ),
-            ),
-            Align(
-              child: RaisedButton(
-                onPressed: () {
-                  // Ir a la ruta / solo si hay texto
-                  if (_controller.text.isNotEmpty) {
-                    Navigator.pushNamed(context, '/');
-                  }
-                },
-                child: const Text('Actualizar'),
-              ),
-            ),
-            */
           ],
         ),
       ),
